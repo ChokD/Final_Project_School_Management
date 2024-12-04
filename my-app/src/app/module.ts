@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { StudentsComponent } from './components/students/students.component';
+// import { StudentsComponent } from './components/students/students.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { StaffComponent } from './components/staff/staff.component';
 import { CoursesComponent } from './components/courses/courses.component';
@@ -16,7 +16,7 @@ import { GradesComponent } from './components/grades/grades.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    StudentsComponent,
+    // StudentsComponent,
     TeachersComponent,
     StaffComponent,
     CoursesComponent,
