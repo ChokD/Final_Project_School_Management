@@ -7,7 +7,7 @@ import { StaffComponent } from './components/staff/staff.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { GradesComponent } from './components/grades/grades.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'students', component: StudentsComponent },
   { path: 'teachers', component: TeachersComponent },
