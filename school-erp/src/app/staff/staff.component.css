@@ -115,3 +115,19 @@ tr:hover {
     transform: translateY(0);
   }
 }
+
+/* Table Row Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.new-row {
+  animation: fadeInUp 1.0s ease-in-out;
+}
