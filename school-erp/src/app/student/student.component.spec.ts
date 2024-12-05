@@ -11,7 +11,7 @@ describe('StudentComponent', () => {
       imports: [StudentComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(StudentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
