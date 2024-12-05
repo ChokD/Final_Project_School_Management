@@ -1,50 +1,56 @@
 <div class="container">
   <h1>Teacher Management</h1>
-  <form id="teacherForm">
+  <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" name="firstName" />
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="newTeacher.firstName">
     </div>
     <div class="form-group">
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" name="lastName" />
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="newTeacher.lastName">
     </div>
     <div class="form-group">
       <label for="teacherId">Teacher ID:</label>
-      <input type="text" id="teacherId" name="teacherId" />
+      <input type="text" id="teacherId" name="teacherId" [(ngModel)]="newTeacher.teacherId">
     </div>
     <div class="form-group">
       <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" />
+      <input type="text" id="subject" name="subject" [(ngModel)]="newTeacher.subject">
     </div>
     <div class="form-group">
       <label for="position">Position:</label>
-      <input type="text" id="position" name="position" />
+      <input type="text" id="position" name="position" [(ngModel)]="newTeacher.position">
     </div>
     <div class="form-group">
       <label for="salary">Salary:</label>
-      <input type="number" id="salary" name="salary" />
+      <input type="number" id="salary" name="salary" [(ngModel)]="newTeacher.salary">
     </div>
-    <button type="submit">Save</button>
+    <button type="submit">Submit</button>
   </form>
 
-  <div class="table-container">
-    <h3>Teacher List</h3>
-    <table id="teacherTable">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>ID</th>
-          <th>Subject</th>
-          <th>Position</th>
-          <th>Salary</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Dynamic data will appear here -->
-      </tbody>
-    </table>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Teacher ID</th>
+        <th>Subject</th>
+        <th>Position</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teacherList; let i = index">
+        <td>{{ teacher.firstName }}</td>
+        <td>{{ teacher.lastName }}</td>
+        <td>{{ teacher.teacherId }}</td>
+        <td>{{ teacher.subject }}</td>
+        <td>{{ teacher.position }}</td>
+        <td>{{ teacher.salary }}</td>
+        <td><button (click)="deleteTeacher(i)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
