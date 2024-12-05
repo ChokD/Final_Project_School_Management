@@ -1,26 +1,48 @@
-<h2>Staff Management</h2>
-<form>
-  <label>First Name: <input type="text" /></label>
-  <label>Last Name: <input type="text" /></label>
-  <label>Staff ID: <input type="text" /></label>
-  <label>Position: <input type="text" /></label>
-  <label>Salary: <input type="number" /></label>
-  <button type="submit">Save</button>
-</form>
-<div>
-  <h3>Staff List</h3>
+<div class="container">
+  <h1>Staff Management</h1>
+  <form>
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName">
+    </div>
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id">
+    </div>
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <input type="text" id="role" name="role">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="text" id="salary" name="salary">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
   <table>
     <thead>
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>ID</th>
-        <th>Position</th>
+        <th>Role</th>
         <th>Salary</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Add dynamic data here -->
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>12345</td>
+        <td>Teacher</td>
+        <td>$50,000</td>
+      </tr>
+      <!-- Add more rows as needed -->
     </tbody>
   </table>
 </div>
