@@ -1,28 +1,50 @@
-<h2>Teacher Management</h2>
-<form>
-  <label>First Name: <input type="text" /></label>
-  <label>Last Name: <input type="text" /></label>
-  <label>Teacher ID: <input type="text" /></label>
-  <label>Subject: <input type="text" /></label>
-  <label>Position: <input type="text" /></label>
-  <label>Salary: <input type="number" /></label>
-  <button type="submit">Save</button>
-</form>
-<div>
-  <h3>Teacher List</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>ID</th>
-        <th>Subject</th>
-        <th>Position</th>
-        <th>Salary</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Add dynamic data here -->
-    </tbody>
-  </table>
+<div class="container">
+  <h1>Teacher Management</h1>
+  <form id="teacherForm">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" />
+    </div>
+    <div class="form-group">
+      <label for="teacherId">Teacher ID:</label>
+      <input type="text" id="teacherId" name="teacherId" />
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" />
+    </div>
+    <div class="form-group">
+      <label for="position">Position:</label>
+      <input type="text" id="position" name="position" />
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" id="salary" name="salary" />
+    </div>
+    <button type="submit">Save</button>
+  </form>
+
+  <div class="table-container">
+    <h3>Teacher List</h3>
+    <table id="teacherTable">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>ID</th>
+          <th>Subject</th>
+          <th>Position</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic data will appear here -->
+      </tbody>
+    </table>
+  </div>
 </div>
