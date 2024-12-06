@@ -1,13 +1,25 @@
-<h2>Grade Records</h2>
-<form>
-  <label>Student ID: <input type="text" /></label>
-  <label>Subject Code: <input type="text" /></label>
-  <label>Score: <input type="number" /></label>
-  <label>Grade: <input type="text" /></label>
-  <button type="submit">Save</button>
-</form>
-<div>
-  <h3>Grade List</h3>
+<div class="container">
+  <h2>Grade Records</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="studentid">Student ID:</label>
+      <input type="text" id="studentid" name="studentid" [(ngModel)]="newgrades.studentid">
+    </div>
+    <div class="form-group">
+      <label for="subjectcode">Subject Code:</label>
+      <input type="text" id="subjectcode" name="subjectcode" [(ngModel)]="newgrades.subjectcode">
+    </div>
+    <div class="form-group">
+      <label for="score">Score:</label>
+      <input type="text" id="score" name="score" [(ngModel)]="newgrades.score">
+    </div>
+    <div class="form-group">
+      <label for="grade">Grade:</label>
+      <input type="text" id="grade" name="grade" [(ngModel)]="newgrades.grade">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
   <table>
     <thead>
       <tr>
@@ -15,10 +27,19 @@
         <th>Subject Code</th>
         <th>Score</th>
         <th>Grade</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Add dynamic data here -->
+      <tr *ngFor="let grades of gradesList; let i = index">
+        <td>{{ grades.studentid }}</td>
+        <td>{{ grades.subjectcode }}</td>
+        <td>{{ grades.score }}</td>
+        <td>{{ grades.grade }}</td>
+        <td><button (click)="deleteGrade(i)">Delete</button></td>
+      </tr>
     </tbody>
   </table>
 </div>
+
+
