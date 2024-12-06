@@ -1,26 +1,103 @@
+body {
+  margin: 0;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ทำให้ฟอร์มอยู่ตรงกลางหน้าจอ */
+}
+
 form {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  gap: 10px;
+  padding: 20px;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  max-width: 600px;
+  min-width: 300px;
 }
 
 form label {
-  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 50%;
+  box-sizing: border-box;
+  margin-left: 10px;
+}
+
+form input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+form button {
+  align-self: center;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+.table-container {
+  margin: 20px auto;
+  width: 80%;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+thead {
+  background-color: #4CAF50;
+  color: white;
 }
 
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid #ddd;
 }
 
 th,
 td {
-  padding: 10px;
+  padding: 12px 15px;
   text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
 }

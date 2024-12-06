@@ -1,28 +1,56 @@
-<h2>Teacher Management</h2>
-<form>
-  <label>First Name: <input type="text" /></label>
-  <label>Last Name: <input type="text" /></label>
-  <label>Teacher ID: <input type="text" /></label>
-  <label>Subject: <input type="text" /></label>
-  <label>Position: <input type="text" /></label>
-  <label>Salary: <input type="number" /></label>
-  <button type="submit">Save</button>
-</form>
-<div>
-  <h3>Teacher List</h3>
+<div class="container">
+  <h1>Teacher Management</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="newTeacher.firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="newTeacher.lastName">
+    </div>
+    <div class="form-group">
+      <label for="teacherId">Teacher ID:</label>
+      <input type="text" id="teacherId" name="teacherId" [(ngModel)]="newTeacher.teacherId">
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" [(ngModel)]="newTeacher.subject">
+    </div>
+    <div class="form-group">
+      <label for="position">Position:</label>
+      <input type="text" id="position" name="position" [(ngModel)]="newTeacher.position">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" id="salary" name="salary" [(ngModel)]="newTeacher.salary">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
   <table>
     <thead>
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>ID</th>
+        <th>Teacher ID</th>
         <th>Subject</th>
         <th>Position</th>
         <th>Salary</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Add dynamic data here -->
+      <tr *ngFor="let teacher of teacherList; let i = index">
+        <td>{{ teacher.firstName }}</td>
+        <td>{{ teacher.lastName }}</td>
+        <td>{{ teacher.teacherId }}</td>
+        <td>{{ teacher.subject }}</td>
+        <td>{{ teacher.position }}</td>
+        <td>{{ teacher.salary }}</td>
+        <td><button (click)="deleteTeacher(i)">Delete</button></td>
+      </tr>
     </tbody>
   </table>
 </div>
+
