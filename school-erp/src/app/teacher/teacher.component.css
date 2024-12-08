@@ -12,6 +12,9 @@ form {
   min-width: 300px;
   margin: auto;
   margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.0s forwards;
 }
 
 .form-group {
@@ -61,16 +64,15 @@ form button:hover {
   background-color: #45a049;
 }
 
-.table-container {
-  margin: 20px auto;
-  width: 80%;
-}
-
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards 0.5s;
 }
 
 thead {
@@ -96,4 +98,37 @@ tbody tr:nth-child(even) {
 
 tbody tr:hover {
   background-color: #ddd;
+}
+
+/* Container Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.container h1 {
+  margin-bottom: 20px;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Table Row Animation */
+.new-row {
+  animation: fadeInUp 1.0s ease-in-out;
 }
