@@ -10,6 +10,9 @@
         [(ngModel)]="newTeacher.firstName"
         placeholder="Enter first name"
       />
+      <small class="error-message" *ngIf="!isValidFirstName">
+        First Name must only contain letters.
+      </small>
     </div>
     <div class="form-group">
       <label for="lastName">Last Name:</label>
@@ -20,6 +23,9 @@
         [(ngModel)]="newTeacher.lastName"
         placeholder="Enter last name"
       />
+      <small class="error-message" *ngIf="!isValidLastName">
+        Last Name must only contain letters.
+      </small>
     </div>
     <div class="form-group">
       <label for="teacherId">Teacher ID:</label>
@@ -53,6 +59,9 @@
     <option value="Geography">Geography</option>
     <option value="Foreign Languages">Foreign Languages</option>
       </select>
+      <small class="error-message" *ngIf="!isValidSubject">
+        Please select a subject.
+      </small>
     </div>
     <div class="form-group">
       <label for="position">Position:</label>
@@ -62,6 +71,9 @@
         <option value="Teacher">Teacher</option>
         <option value="Assistant Teacher">Assistant Teacher</option>
       </select>
+      <small class="error-message" *ngIf="!isValidPosition">
+        Please select a position.
+      </small>
     </div>
     <div class="form-group">
       <label for="salary">Salary:</label>
@@ -73,10 +85,15 @@
         (focus)="selectText($event)"
         placeholder="Enter Salary"
       />
+      <small class="error-message" *ngIf="!isValidSalary">
+        Salary must be a positive number.
+      </small>
     </div>
 
     <button type="submit">Add Teacher</button>
   </form>
+
+  <h2>Teacher List</h2>
 
   <table>
     <thead>
@@ -105,4 +122,12 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- Alert Popup -->
+<div id="alertPopup" class="alert-popup" style="display: none;">
+  <div class="alert-content">
+    <p id="alertMessage"></p>
+    <button (click)="closeAlert()">Close</button>
+  </div>
 </div>

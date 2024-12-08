@@ -41,9 +41,17 @@ export class TeacherComponent implements OnInit {
 
   editIndex: number | null = null;
 
+  // Validation state
+  isValidFirstName: boolean = true;
+  isValidLastName: boolean = true;
+  isValidSalary: boolean = true;
+  isValidSubject: boolean = true;
+  isValidPosition: boolean = true;
+  isFormValid: boolean = true;
+
   ngOnInit() {
-    this.loadTeacherList(); // โหลดข้อมูลจาก localStorage เมื่อเริ่มต้น
-    this.generateTeacherId(); // สร้าง Teacher ID เมื่อเริ่มต้น
+    this.loadTeacherList();
+    this.generateTeacherId();
   }
 
   generateTeacherId() {
@@ -53,16 +61,33 @@ export class TeacherComponent implements OnInit {
     this.newTeacher.teacherId = `T${newId.toString().padStart(3, '0')}`;
   }
 
+  validateForm() {
+    this.isValidFirstName = /^[a-zA-Z]+$/.test(this.newTeacher.firstName.trim());
+    this.isValidLastName = /^[a-zA-Z]+$/.test(this.newTeacher.lastName.trim());
+    this.isValidSubject = this.newTeacher.subject !== '';
+    this.isValidPosition = this.newTeacher.position !== '';
+    this.isValidSalary = this.newTeacher.salary > 0;
+
+    this.isFormValid =
+      this.isValidFirstName && this.isValidLastName && this.isValidSalary &&
+      this.isValidSubject && this.isValidPosition;
+  }
+
   addOrUpdateTeacher() {
-    if (this.editIndex !== null) {
-      this.teacherList[this.editIndex] = { ...this.newTeacher };
-      this.editIndex = null;
+    this.validateForm();
+    if (this.isFormValid) {
+      if (this.editIndex !== null) {
+        this.teacherList[this.editIndex] = { ...this.newTeacher };
+        this.editIndex = null;
+      } else {
+        this.teacherList.push({ ...this.newTeacher });
+      }
+      this.clearForm();
+      this.generateTeacherId();
+      this.saveTeacherList();
     } else {
-      this.teacherList.push({ ...this.newTeacher });
+      this.showAlert('Please fix the errors before submitting.');
     }
-    this.clearForm();
-    this.generateTeacherId(); // สร้าง Teacher ID ใหม่หลังเพิ่มหรืออัปเดตข้อมูล
-    this.saveTeacherList(); // บันทึกข้อมูลหลังจากที่มีการเพิ่มหรืออัปเดต
   }
 
   editTeacher(index: number) {
@@ -76,7 +101,7 @@ export class TeacherComponent implements OnInit {
       this.clearForm();
       this.generateTeacherId();
     }
-    this.saveTeacherList(); // บันทึกข้อมูลหลังจากที่มีการลบข้อมูล
+    this.saveTeacherList();
   }
 
   clearForm() {
@@ -88,7 +113,7 @@ export class TeacherComponent implements OnInit {
       position: '',
       salary: 0,
     };
-    this.generateTeacherId(); // คืนค่า Teacher ID ใหม่เมื่อฟอร์มถูกล้าง
+    this.generateTeacherId();
   }
 
   onSubmit() {
@@ -101,13 +126,35 @@ export class TeacherComponent implements OnInit {
   }
 
   saveTeacherList() {
-    localStorage.setItem('teacherList', JSON.stringify(this.teacherList)); // บันทึกข้อมูลลงใน localStorage
+    localStorage.setItem('teacherList', JSON.stringify(this.teacherList));
   }
 
   loadTeacherList() {
     const savedList = localStorage.getItem('teacherList');
     if (savedList) {
-      this.teacherList = JSON.parse(savedList); // โหลดข้อมูลจาก localStorage
+      this.teacherList = JSON.parse(savedList);
+    }
+  }
+
+  showAlert(message: string) {
+    const alertPopup = document.getElementById('alertPopup');
+    const alertMessage = document.getElementById('alertMessage');
+    if (alertPopup && alertMessage) {
+      alertMessage.innerText = message;
+      alertPopup.classList.add('show'); // เพิ่มคลาส show
+      alertPopup.classList.remove('hide'); // ลบคลาส hide
+      alertPopup.style.display = 'flex'; // ตั้งค่าให้แสดง
+    }
+  }
+  
+  closeAlert() {
+    const alertPopup = document.getElementById('alertPopup');
+    if (alertPopup) {
+      alertPopup.classList.add('hide'); // เพิ่มคลาส hide
+      alertPopup.classList.remove('show'); // ลบคลาส show
+      setTimeout(() => {
+        alertPopup.style.display = 'none'; // ซ่อน alertPopup หลังจากอนิเมชั่นปิด
+      }, 300); // ตั้งเวลาให้พอดีกับระยะเวลาอนิเมชั่น
     }
   }
 }
