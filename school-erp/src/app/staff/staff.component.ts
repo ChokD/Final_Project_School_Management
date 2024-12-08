@@ -24,17 +24,30 @@ export class StaffComponent implements OnInit {
 
   ngOnInit() {
     this.loadStaffList();
+    this.generateStaffId();
+  }
+
+  generateStaffId() {
+    const lastStaff = this.staffList[this.staffList.length - 1];
+    const lastId = lastStaff ? parseInt(lastStaff.id.substring(1)) : 0;
+    const newId = lastId + 1;
+    this.newStaff.id = `E${newId.toString().padStart(3, '0')}`;
   }
 
   addOrUpdateStaff() {
     if (this.editIndex !== null) {
-      this.staffList[this.editIndex] = this.newStaff;
+      this.staffList[this.editIndex] = { ...this.newStaff };
       this.editIndex = null;
     } else {
       this.staffList.push({ ...this.newStaff });
+      setTimeout(() => {
+        const rows = document.querySelectorAll('tbody tr');
+        rows[rows.length - 1].classList.add('new-row');
+      }, 0);
     }
-    this.newStaff = { firstName: '', lastName: '', id: '', role: '', salary: '' };
+    this.clearForm();
     this.saveStaffList();
+    this.generateStaffId();
   }
 
   editStaff(index: number) {
@@ -45,6 +58,15 @@ export class StaffComponent implements OnInit {
   deleteStaff(index: number) {
     this.staffList.splice(index, 1);
     this.saveStaffList();
+    if (this.editIndex === index) {
+      this.clearForm();
+      this.generateStaffId();
+    }
+  }
+
+  clearForm() {
+    this.newStaff = { firstName: '', lastName: '', id: '', role: '', salary: '' };
+    this.generateStaffId();
   }
 
   onSubmit() {

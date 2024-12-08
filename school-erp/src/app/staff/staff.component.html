@@ -47,7 +47,10 @@
         <td>{{ staff.id }}</td>
         <td>{{ staff.role }}</td>
         <td>{{ staff.salary }}</td>
-        <td><button (click)="deleteStaff(i)">Delete</button></td>
+        <td>
+          <button class="edit" (click)="editStaff(i)">Edit</button>
+          <button class="delete" (click)="deleteStaff(i)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
