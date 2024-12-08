@@ -28,7 +28,7 @@ form {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 80%;
-  max-width: 600px; /* Increased max-width for larger form */
+  max-width: 500px;
   margin: 20px auto;
   opacity: 0;
   transform: translateY(20px);
@@ -36,17 +36,19 @@ form {
   margin: auto;
   margin-bottom: 20px;
   gap: 15px;
+  border:  2px solid #007bff;
 }
 
 label {
   display: block; /* Make label a block element so it takes up full width */
   margin-bottom: 10px; /* Space between label and input */
+
 }
 
 input[type="text"],
 input[type="number"] {
   width: 100%; /* Ensure the input spans the full width */
-  padding: 12px; /* Increased padding for better appearance */
+  padding: 10px; /* Adjust padding for better appearance */
   font-size: 16px; /* Increase font size for better readability */
   box-sizing: border-box; /* Include padding and border in the total width */
   margin-bottom: 10px; /* Space between input fields */
@@ -61,7 +63,7 @@ input[type="number"] {
 /* Button Styles */
 form button {
   font-weight: bold;
-  padding: 12px 20px; /* Increased padding for better button appearance */
+  padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;

@@ -29,6 +29,7 @@ export class SubjectComponent implements OnInit {
 
   ngOnInit() {
     this.loadSubjects();
+    this.newSubject.code = this.generateNextCode(); // Generate the initial code
   }
 
   addOrUpdateSubject() {
@@ -39,7 +40,7 @@ export class SubjectComponent implements OnInit {
       this.newSubject.code = this.generateNextCode();
       this.subjectList.push({ ...this.newSubject });
     }
-    this.newSubject = { subjectName: '', code: '', responsibleTeacher: '', price: '' };
+    this.newSubject = { subjectName: '', code: this.generateNextCode(), responsibleTeacher: '', price: '' };
     this.saveSubjects();
   }
 
