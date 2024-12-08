@@ -1,22 +1,64 @@
 <div class="container">
   <h1>Grade Records</h1>
   <form (ngSubmit)="onSubmit()">
+    <!-- Student ID -->
     <div class="form-group">
       <label for="studentid">Student ID:</label>
-      <input type="text" id="studentid" name="studentid" [(ngModel)]="newgrades.studentid">
+      <input
+        type="text"
+        id="studentid"
+        name="studentid"
+        [(ngModel)]="newgrades.studentid"
+        placeholder="Enter Student ID"
+        required
+        (ngModelChange)="validateForm()"
+      />
+      <div *ngIf="!isValidStudentId && newgrades.studentid.trim()" class="error">Enter numbers only</div>
     </div>
+
+    <!-- Subject Code -->
     <div class="form-group">
       <label for="subjectcode">Subject Code:</label>
-      <input type="text" id="subjectcode" name="subjectcode" [(ngModel)]="newgrades.subjectcode">
+      <input
+        type="text"
+        id="subjectcode"
+        name="subjectcode"
+        [(ngModel)]="newgrades.subjectcode"
+        placeholder="Enter Subject Code"
+        required
+        (ngModelChange)="validateForm()"
+      />
+      <div *ngIf="!isValidSubjectCode && newgrades.subjectcode.trim()" class="error">Enter only numbers and letters</div>
     </div>
+
+    <!-- Score -->
     <div class="form-group">
       <label for="score">Score:</label>
-      <input type="text" id="score" name="score" [(ngModel)]="newgrades.score">
+      <input
+        type="text"
+        id="score"
+        name="score"
+        [(ngModel)]="newgrades.score"
+        placeholder="Enter Score"
+        required
+        (ngModelChange)="onScoreChange(); validateForm()"
+      />
+      <div *ngIf="!isValidScore && newgrades.score?.toString().trim()" class="error">Enter numbers only(0-100)</div>
     </div>
+
+    <!-- Grade -->
     <div class="form-group">
       <label for="grade">Grade:</label>
-      <input type="text" id="grade" name="grade" [(ngModel)]="newgrades.grade">
+      <input
+        type="text"
+        id="grade"
+        name="grade"
+        [(ngModel)]="newgrades.grade"
+        placeholder="Grade"
+        readonly
+      />
     </div>
+
     <button type="submit">Submit</button>
   </form>
 
@@ -36,10 +78,11 @@
         <td>{{ grades.subjectcode }}</td>
         <td>{{ grades.score }}</td>
         <td>{{ grades.grade }}</td>
-        <td><button (click)="deleteGrade(i)">Delete</button></td>
+        <td>
+          <button class="edit-button" (click)="editGrade(i)">Edit</button>
+          <button class="delete-button" (click)="deleteGrade(i)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-
