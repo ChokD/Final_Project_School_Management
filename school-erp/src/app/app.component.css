@@ -1,27 +1,63 @@
-.container {
-    text-align: center;
-    margin: 20px;
-  }
-  
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 10px; /* Adjust the gap as needed */
+.header {
+  text-align: center;
+  background-color: #f8f9fa; /* สีพื้นหลังอ่อน */
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #007bff; /* กรอบสีน้ำเงิน */
+  border-radius: 10px; /* ขอบมน */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* เงาเบา ๆ */
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #007bff; /* สีน้ำเงิน */
+  font-weight: bold;
+}
+
+.header h1 a {
+  text-decoration: none; /* ลบขีดเส้นใต้ */
+  color: #007bff;
+  transition: color 0.3s ease; /* เพิ่มเอฟเฟกต์เมื่อชี้เมาส์ */
+}
+
+.header h1 a:hover {
+  color: #0056b3; /* เปลี่ยนเป็นสีเข้มเมื่อโฮเวอร์ */
+}
+
+.navbar {
+  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
   margin-bottom: 20px;
 }
-  
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 15px; /* Adjust the padding as needed */
-  margin: 0; /* Remove margin */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
 }
-  
-button:hover {
-  transform: scale(1.1);
-  background-color: #45a049;
+
+.navbar li {
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #0056b3;
+}
+
+.navbar a.active {
+  background-color: #0056b3;
+  font-weight: bold;
 }

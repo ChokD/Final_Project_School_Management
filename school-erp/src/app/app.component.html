@@ -1,12 +1,17 @@
 <div class="container">
-  <h1>School ERP System</h1>
-  <nav>
-    <button routerLink="/student">Student Management</button>
-    <button routerLink="/teacher">Teacher Management</button>
-    <button routerLink="/staff">Staff Management</button>
-    <button routerLink="/subject">Subject Management</button>
-    <button routerLink="/grades">Grade Records</button>
+  <header class="header">
+    <h1><a routerLink="/">School ERP System</a></h1>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a routerLink="/student" routerLinkActive="active">Student Management</a></li>
+      <li><a routerLink="/teacher" routerLinkActive="active">Teacher Management</a></li>
+      <li><a routerLink="/staff" routerLinkActive="active">Staff Management</a></li>
+      <li><a routerLink="/subject" routerLinkActive="active">Subject Management</a></li>
+      <li><a routerLink="/grades" routerLinkActive="active">Grade Records</a></li>
+    </ul>
   </nav>
   <router-outlet></router-outlet>
 </div>
-
