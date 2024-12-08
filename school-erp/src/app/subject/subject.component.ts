@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -16,7 +16,7 @@ interface Subject {
   templateUrl: './subject.component.html',
   styleUrls: ['./subject.component.css']
 })
-export class SubjectComponent {
+export class SubjectComponent implements OnInit {
   newSubject: Subject = { subjectName: '', code: '', responsibleTeacher: '', price: '' };
   editIndex: number | null = null;
   subjectList: Subject[] = [];
@@ -24,6 +24,10 @@ export class SubjectComponent {
   isValidSubjectName: boolean = true;
   isValidResponsibleTeacher: boolean = true;
   isFormValid: boolean = true;
+
+  ngOnInit() {
+    this.loadSubjects();
+  }
 
   addOrUpdateSubject() {
     if (this.editIndex !== null) {
@@ -34,6 +38,7 @@ export class SubjectComponent {
       this.subjectList.push({ ...this.newSubject });
     }
     this.newSubject = { subjectName: '', code: '', responsibleTeacher: '', price: '' };
+    this.saveSubjects();
   }
 
   editSubject(index: number) {
@@ -43,6 +48,7 @@ export class SubjectComponent {
 
   deleteSubject(index: number) {
     this.subjectList.splice(index, 1);
+    this.saveSubjects();
   }
 
   onSubmit(form: any) {
@@ -86,5 +92,16 @@ export class SubjectComponent {
     const lastNumber = parseInt(lastCode.substring(1), 10);
     const nextNumber = lastNumber + 1;
     return 'S' + nextNumber.toString().padStart(3, '0');
+  }
+
+  saveSubjects() {
+    localStorage.setItem('subjectList', JSON.stringify(this.subjectList));
+  }
+
+  loadSubjects() {
+    const savedSubjects = localStorage.getItem('subjectList');
+    if (savedSubjects) {
+      this.subjectList = JSON.parse(savedSubjects);
+    }
   }
 }
