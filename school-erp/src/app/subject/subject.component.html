@@ -1,13 +1,25 @@
-<h2>Subject Management</h2>
-<form>
-  <label>Subject Name: <input type="text" /></label>
-  <label>Subject Code: <input type="text" /></label>
-  <label>Responsible Teacher: <input type="text" /></label>
-  <label>Price: <input type="number" /></label>
-  <button type="submit">Save</button>
-</form>
-<div>
-  <h3>Subject List</h3>
+<div class="container">
+  <h1>Subject Management</h1>
+  <form #subjectForm="ngForm" (ngSubmit)="onSubmit(subjectForm)">
+    <div class="form-group">
+      <label for="subjectName">Subject Name:</label>
+      <input type="text" id="subjectName" name="subjectName" [(ngModel)]="newSubject.subjectName" required>
+    </div>
+    <div class="form-group">
+      <label for="code">Code:</label>
+      <input type="text" id="code" name="code" [(ngModel)]="newSubject.code" required>
+    </div>
+    <div class="form-group">
+      <label for="responsibleTeacher">Responsible Teacher:</label>
+      <input type="text" id="responsibleTeacher" name="responsibleTeacher" [(ngModel)]="newSubject.responsibleTeacher" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" [(ngModel)]="newSubject.price" required min="0" step="1">
+    </div>
+    <button type="submit" [disabled]="subjectForm.invalid">Submit</button>
+  </form>
+
   <table>
     <thead>
       <tr>
@@ -15,10 +27,20 @@
         <th>Code</th>
         <th>Responsible Teacher</th>
         <th>Price</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Add dynamic data here -->
+      <tr *ngFor="let subject of subjectList; let i = index">
+        <td>{{ subject.subjectName }}</td>
+        <td>{{ subject.code }}</td>
+        <td>{{ subject.responsibleTeacher }}</td>
+        <td>{{ subject.price }}</td>
+        <td>
+          <button class="edit" (click)="editSubject(i)">Edit</button>
+          <button class="delete" (click)="deleteSubject(i)">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

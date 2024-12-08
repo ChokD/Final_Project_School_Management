@@ -1,26 +1,156 @@
+/* Form Styles */
 form {
   display: flex;
   flex-direction: column;
   align-items: start;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.0s forwards;
+}
+
+form .form-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 form label {
-  margin: 5px 0;
+  margin-right: 10px;
+  font-weight: bold;
+  width: 200px; /* Adjust the width as needed */
 }
 
+form input,
+form select,
+form textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Container Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.container h1 {
+  margin-bottom: 20px;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards 0.5s;
 }
 
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid #ddd;
 }
 
 th,
 td {
-  padding: 10px;
+  padding: 8px;
   text-align: left;
+}
+
+th {
+  background-color: #007bff; /* สีฟ้าหัวตาราง */
+  color: white; /* Ensure the text is readable on the blue background */
+  padding: 8px;
+  text-align: left;
+  font-family: 'Arial', sans-serif; /* Use a modern sans-serif font */
+  font-size: 14px; /* Adjust font size for readability */
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid #0056b3; /* Add a border to emphasize the separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+/* Table Row Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.new-row {
+  animation: fadeInUp 1.0s ease-in-out;
+}
+
+/* Button Styles */
+table button {
+  margin-right: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+table button:last-child {
+  margin-right: 0; /* ลบระยะห่างสำหรับปุ่มสุดท้าย */
+}
+
+table button.edit {
+  background-color: #0b2dee;
+  color: white;
+}
+
+table button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+table button.edit:hover {
+  background-color: #0b2dee;
+}
+
+table button.delete:hover {
+  background-color: #e53935;
 }
