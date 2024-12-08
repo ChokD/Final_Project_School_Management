@@ -1,20 +1,7 @@
-body {
-  margin: 0;
-  background-color: #f4f4f4;
-  font-family: Arial, sans-serif;
-}
-
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* ทำให้ฟอร์มอยู่ตรงกลางหน้าจอ */
-}
-
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   padding: 20px;
   border: 2px solid #4CAF50;
   border-radius: 10px;
@@ -23,28 +10,37 @@ form {
   width: 50%;
   max-width: 600px;
   min-width: 300px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 form label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: inline-block;
   font-size: 14px;
   font-weight: bold;
   color: #333;
+  width: 30%; /* ปรับขนาดตามที่ต้องการ */
 }
 
-form input {
+form input,
+form select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-  width: 50%;
+  width: 65%; /* ปรับให้พอดีกับ label */
   box-sizing: border-box;
-  margin-left: 10px;
 }
 
-form input:focus {
+form input:focus,
+form select:focus {
   border-color: #4CAF50;
   outline: none;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);

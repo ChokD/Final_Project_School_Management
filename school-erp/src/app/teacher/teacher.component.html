@@ -3,37 +3,77 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" name="firstName" [(ngModel)]="newTeacher.firstName">
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="newTeacher.firstName"
+      />
     </div>
     <div class="form-group">
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" name="lastName" [(ngModel)]="newTeacher.lastName">
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="newTeacher.lastName"
+      />
     </div>
     <div class="form-group">
       <label for="teacherId">Teacher ID:</label>
-      <input type="text" id="teacherId" name="teacherId" [(ngModel)]="newTeacher.teacherId">
+      <input
+        type="text"
+        id="teacherId"
+        name="teacherId"
+        [(ngModel)]="newTeacher.teacherId"
+        readonly
+      />
     </div>
     <div class="form-group">
       <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" [(ngModel)]="newTeacher.subject">
+      <select
+        type="text"
+        id="subject"
+        name="subject"
+        [(ngModel)]="newTeacher.subject"
+      >
+        <option value="Mathematics">Mathematics</option>
+        <option value="Science">Science</option>
+        <option value="English">English</option>
+        <option value="History">History</option>
+        <option value="Physical Education">Physical Education</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="position">Position:</label>
-      <input type="text" id="position" name="position" [(ngModel)]="newTeacher.position">
+      <select id="position" name="position" [(ngModel)]="newTeacher.position">
+        <option value="Head Teacher">Head Teacher</option>
+        <option value="Senior Teacher">Senior Teacher</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Assistant Teacher">Assistant Teacher</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="salary">Salary:</label>
-      <input type="number" id="salary" name="salary" [(ngModel)]="newTeacher.salary">
+      <input
+        type="number"
+        id="salary"
+        name="salary"
+        [(ngModel)]="newTeacher.salary"
+        (focus)="selectText($event)"
+        placeholder="Enter Salary"
+      />
     </div>
+
     <button type="submit">Submit</button>
   </form>
 
   <table>
     <thead>
       <tr>
+        <th>Teacher ID</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Teacher ID</th>
         <th>Subject</th>
         <th>Position</th>
         <th>Salary</th>
@@ -42,15 +82,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let teacher of teacherList; let i = index">
+        <td>{{ teacher.teacherId }}</td>
         <td>{{ teacher.firstName }}</td>
         <td>{{ teacher.lastName }}</td>
-        <td>{{ teacher.teacherId }}</td>
         <td>{{ teacher.subject }}</td>
         <td>{{ teacher.position }}</td>
         <td>{{ teacher.salary }}</td>
-        <td><button (click)="deleteTeacher(i)">Delete</button></td>
+        <td>
+          <button (click)="editTeacher(i)">Edit</button>
+          <button (click)="deleteTeacher(i)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
-
