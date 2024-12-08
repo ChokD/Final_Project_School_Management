@@ -33,15 +33,17 @@ export class StudentComponent implements OnInit {
   }
 
   validateForm() {
-    // ตรวจสอบว่าไม่มีช่องว่าง
+    // ตรวจสอบชื่อให้มีตัวอักษร
     this.isValidFirstName = /^[a-zA-Z]+$/.test(this.newStudent.firstName.trim());
     this.isValidLastName = /^[a-zA-Z]+$/.test(this.newStudent.lastName.trim());
+    
+    // ตรวจสอบให้ ID เป็นตัวเลขเท่านั้น
     this.isValidId = /^[0-9]+$/.test(this.newStudent.id.trim());
-
+  
     // อัพเดตสถานะของฟอร์ม
     this.isFormValid = this.isValidFirstName && this.isValidLastName && this.isValidId;
   }
-
+  
   capitalizeFirstLetter(value: string) {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   }
