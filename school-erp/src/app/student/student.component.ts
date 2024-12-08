@@ -19,8 +19,9 @@ interface Student {
 })
 export class StudentComponent implements OnInit {
   studentList: Student[] = [];
-  newStudent: Student = { firstName: '', lastName: '', id: '', year: 0, classroom: '' };
+  newStudent: Student = { firstName: '', lastName: '', id: '', year: 1, classroom: '' };
   editIndex: number | null = null;
+  years: number[] = [1, 2, 3, 4, 5]; // ตัวเลือกสำหรับ Year
 
   ngOnInit() {
     this.loadStudentList();
@@ -33,7 +34,7 @@ export class StudentComponent implements OnInit {
     } else {
       this.studentList.push({ ...this.newStudent });
     }
-    this.newStudent = { firstName: '', lastName: '', id: '', year: 0, classroom: '' };
+    this.newStudent = { firstName: '', lastName: '', id: '', year: 1, classroom: '' };
     this.saveStudentList();
   }
 
