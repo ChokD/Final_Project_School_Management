@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -17,21 +17,24 @@ interface Student {
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
-export class StudentComponent {
-  studentList: Student[] = [
-    { firstName: 'John', lastName: 'Doe', id: 'S001', year: 1, classroom: 'A101' }
-  ];
+export class StudentComponent implements OnInit {
+  studentList: Student[] = [];
   newStudent: Student = { firstName: '', lastName: '', id: '', year: 0, classroom: '' };
   editIndex: number | null = null;
 
+  ngOnInit() {
+    this.loadStudentList();
+  }
+
   addOrUpdateStudent() {
     if (this.editIndex !== null) {
-      this.studentList[this.editIndex] = this.newStudent;
+      this.studentList[this.editIndex] = { ...this.newStudent };
       this.editIndex = null;
     } else {
-      this.studentList.push(this.newStudent);
+      this.studentList.push({ ...this.newStudent });
     }
     this.newStudent = { firstName: '', lastName: '', id: '', year: 0, classroom: '' };
+    this.saveStudentList();
   }
 
   editStudent(index: number) {
@@ -41,14 +44,21 @@ export class StudentComponent {
 
   deleteStudent(index: number) {
     this.studentList.splice(index, 1);
+    this.saveStudentList();
   }
 
   onSubmit() {
-    this.studentList.push({ ...this.newStudent });
-    this.newStudent = { firstName: '', lastName: '', id: '', year: 0, classroom: '' };
-    setTimeout(() => {
-      const rows = document.querySelectorAll('tbody tr');
-      rows[rows.length - 1].classList.add('new-row');
-    }, 0);
+    this.addOrUpdateStudent();
+  }
+
+  saveStudentList() {
+    localStorage.setItem('studentList', JSON.stringify(this.studentList));
+  }
+
+  loadStudentList() {
+    const savedList = localStorage.getItem('studentList');
+    if (savedList) {
+      this.studentList = JSON.parse(savedList);
+    }
   }
 }
