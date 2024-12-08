@@ -4,15 +4,20 @@ form {
   flex-direction: column;
   align-items: start;
   background-color: #f9f9f9;
-  padding: 20px;
+  padding: 40px;
+  padding-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 800px;
+  max-width: 700px;
   margin: 20px auto;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1.0s forwards;
+  margin: auto;
+  margin-bottom: 20px;
+  opacity: 0;
+  gap: 15px;
 }
 
 form .form-group {
@@ -48,6 +53,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  font-family: 'Arial', sans-serif; 
 }
 
 form button:hover {
@@ -75,8 +81,10 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  max-width: 800px;
+  max-width: 2000px;
   margin: 20px auto;
+  font-family: 'Arial', sans-serif; 
+  font-size: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(20px);
@@ -153,4 +161,22 @@ table button.edit:hover {
 
 table button.delete:hover {
   background-color: #e53935;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.alert {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
 }

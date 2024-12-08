@@ -20,6 +20,10 @@ export class SubjectComponent {
   newSubject: Subject = { subjectName: '', code: '', responsibleTeacher: '', price: '' };
   editIndex: number | null = null;
   subjectList: Subject[] = [];
+  isValidCode: boolean = true;
+  isValidSubjectName: boolean = true;
+  isValidResponsibleTeacher: boolean = true;
+  isFormValid: boolean = true;
 
   addOrUpdateSubject() {
     if (this.editIndex !== null) {
@@ -42,11 +46,36 @@ export class SubjectComponent {
   }
 
   onSubmit(form: any) {
-    if (form.invalid) {
-      alert('Please fill all the form fields.');
+    this.validateForm();
+    if (form.invalid || !this.isFormValid) {
+      alert('Please fill all the form fields correctly.');
       return;
     }
-    this.addOrUpdateSubject();
+    if (confirm('Are you sure you want to submit the form?')) {
+      this.addOrUpdateSubject();
+      this.showAlert();
+    }
+  }
+
+  showAlert() {
+    alert('Submit Successful!');
+  }
+
+  validateForm() {
+    // Validate subject name to contain only letters (both Thai and English)
+    this.isValidSubjectName = /^[a-zA-Zก-ฮ่-๋็์ะาิีึเแโใไ]+$/.test(this.newSubject.subjectName.trim());
+
+    // Validate responsible teacher name to contain only letters (both Thai and English)
+    this.isValidResponsibleTeacher = /^[a-zA-Zก-ฮ่-๋็์ะาิีึเแโใไ]+$/.test(this.newSubject.responsibleTeacher.trim());
+    if (!this.isValidResponsibleTeacher && /\d/.test(this.newSubject.responsibleTeacher)) {
+      alert('Responsible Teacher must contain only letters.');
+    }
+
+    // Validate code to be in the format S001, S002, etc.
+    this.isValidCode = /^S\d{3}$/.test(this.newSubject.code.trim());
+
+    // Update form validity status
+    this.isFormValid = this.isValidSubjectName && this.isValidResponsibleTeacher && this.isValidCode;
   }
 
   generateNextCode(): string {
