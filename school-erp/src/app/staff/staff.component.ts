@@ -70,6 +70,34 @@ export class StaffComponent implements OnInit {
   }
 
   onSubmit() {
+    const namePattern = /^[a-zA-Zก-ฮ่-๋็์ะาิีึเแโใไ]+$/;
+    const salaryPattern = /^[0-9]+$/;
+
+    if (!this.newStaff.firstName || !this.newStaff.lastName || !this.newStaff.role || !this.newStaff.salary) {
+      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+      return;
+    }
+
+    if (!this.newStaff.firstName || !namePattern.test(this.newStaff.firstName)) {
+      alert('กรุณากรอกชื่อเป็นตัวอักษรเท่านั้น');
+      return;
+    }
+
+    if (!this.newStaff.lastName || !namePattern.test(this.newStaff.lastName)) {
+      alert('กรุณากรอกนามสกุลเป็นตัวอักษรเท่านั้น');
+      return;
+    }
+
+    if (!this.newStaff.role) {
+      alert('กรุณาเลือกบทบาท');
+      return;
+    }
+
+    if (!this.newStaff.salary || !salaryPattern.test(this.newStaff.salary)) {
+      alert('กรุณากรอกเงินเดือนเป็นตัวเลขเท่านั้น');
+      return;
+    }
+
     this.addOrUpdateStaff();
   }
 
