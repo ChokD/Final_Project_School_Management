@@ -24,6 +24,8 @@ export class SubjectComponent implements OnInit {
   isValidSubjectName: boolean = true;
   isValidResponsibleTeacher: boolean = true;
   isFormValid: boolean = true;
+  showAlertPopup: boolean = false;
+  alertMessage: string = '';
 
   ngOnInit() {
     this.loadSubjects();
@@ -54,17 +56,22 @@ export class SubjectComponent implements OnInit {
   onSubmit(form: any) {
     this.validateForm();
     if (form.invalid || !this.isFormValid) {
-      alert('Please fill all the form fields correctly.');
+      this.showAlert('Please fill all the form fields correctly.');
       return;
     }
     if (confirm('Are you sure you want to submit the form?')) {
       this.addOrUpdateSubject();
-      this.showAlert();
+      this.showAlert('Submit Successful!');
     }
   }
 
-  showAlert() {
-    alert('Submit Successful!');
+  showAlert(message: string) {
+    this.alertMessage = message;
+    this.showAlertPopup = true;
+  }
+
+  closeAlert() {
+    this.showAlertPopup = false;
   }
 
   validateForm() {
@@ -74,7 +81,7 @@ export class SubjectComponent implements OnInit {
     // Validate responsible teacher name to contain only letters (both Thai and English)
     this.isValidResponsibleTeacher = /^[a-zA-Zก-ฮ่-๋็์ะาิีึเแโใไ]+$/.test(this.newSubject.responsibleTeacher.trim());
     if (!this.isValidResponsibleTeacher && /\d/.test(this.newSubject.responsibleTeacher)) {
-      alert('Responsible Teacher must contain only letters.');
+      this.showAlert('Responsible Teacher must contain only letters.');
     }
 
     // Validate code to be in the format S001, S002, etc.

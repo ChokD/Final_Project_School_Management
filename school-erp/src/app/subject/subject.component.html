@@ -47,3 +47,11 @@
     </tbody>
   </table>
 </div>
+
+<!-- Custom Alert Popup -->
+<div id="alertPopup" class="alert-popup" *ngIf="showAlertPopup">
+  <div class="alert-content">
+    <span id="alertMessage">{{ alertMessage }}</span>
+    <button class="close-btn" (click)="closeAlert()">Close</button>
+  </div>
+</div>
