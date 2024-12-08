@@ -3,13 +3,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px; /* Increased padding */
+  padding: 30px;
 }
 
 .container h1 {
-  margin-bottom: 30px; /* Increased margin */
-  color: #333;
-  font-size: 2.5rem; /* Increased font size */
+  margin-bottom: 30px;
+  color: #007bff; /* สีน้ำเงิน */
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
@@ -19,11 +19,11 @@ form {
   flex-direction: column;
   align-items: start;
   background-color: #f8f9fa;
-  padding: 30px; /* Increased padding */
-  border-radius: 10px; /* Adjusted border radius */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* เงาเบา ๆ */
   width: 100%;
-  max-width: 700px; /* Increased max width */
+  max-width: 700px;
   margin: 30px auto;
 }
 
@@ -31,76 +31,76 @@ form .form-group {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px; /* Increased margin */
+  margin-bottom: 20px;
   width: 100%;
 }
 
 form label {
   font-weight: bold;
-  font-size: 1.2rem; /* Increased font size */
-  color: #333;
-  margin-right: 15px; /* More spacing between label and input */
-  width: 180px; /* Increased width for label */
+  font-size: 1.2rem;
+  color: #007bff; /* สีน้ำเงิน */
+  margin-right: 15px;
+  width: 180px;
   text-align: right;
 }
 
 form input,
 form select {
-  padding: 15px; /* Increased padding */
+  padding: 15px;
   border: 1px solid #ced4da;
-  border-radius: 6px; /* Slightly rounded corners */
-  font-size: 1.2rem; /* Larger font size */
+  border-radius: 6px;
+  font-size: 1.2rem;
   flex: 1;
 }
 
 form button {
   width: 100%;
-  background-color: #007bff;
+  background-color: #007bff; /* สีน้ำเงิน */
   color: white;
-  padding: 18px 24px; /* Increased padding */
-  margin: 12px 0; /* Increased margin */
+  padding: 18px 24px;
+  margin: 12px 0;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 1.2rem;
   transition: background-color 0.3s ease;
 }
 
 form button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* สีฟ้าเข้ม */
 }
 
 /* Table Button Styles */
 .edit-button {
-  background-color: #28a745; /* Green color */
+  background-color: #007bff; /* สีน้ำเงิน */
   color: white;
-  padding: 8px 15px; /* Adjust padding for better size */
-  margin-right: 10px; /* Add spacing between buttons */
+  padding: 8px 15px;
+  margin-right: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem; /* Font size */
+  font-size: 0.9rem;
   transition: background-color 0.3s ease;
 }
 
 .edit-button:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #0056b3; /* สีฟ้าเข้ม */
 }
 
 .delete-button {
-  background-color: #dc3545; /* Red color */
+  background-color: #dc3545; /* สีแดง */
   color: white;
-  padding: 8px 15px; /* Adjust padding for better size */
-  margin-left: 10px; /* Add spacing between buttons */
+  padding: 8px 15px;
+  margin-left: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem; /* Font size */
+  font-size: 0.9rem;
   transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
-  background-color: #c82333; /* Darker red on hover */
+  background-color: #c82333; /* สีแดงเข้ม */
 }
 
 /* Table Styles */
@@ -108,13 +108,13 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 30px;
-  max-width: 1200px; /* Adjust table width */
+  max-width: 1200px;
   margin: 30px auto;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Shadow effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* เงาเบา ๆ */
 }
 
 table th {
-  background-color: #28a745; /* Green header */
+  background-color: #007bff; /* สีน้ำเงิน */
   color: white;
   font-size: 1.2rem;
   padding: 12px;
@@ -123,13 +123,13 @@ table th {
 table td {
   padding: 10px;
   font-size: 1rem;
-  background-color: #e9f7ea; /* Light green for rows */
+  background-color: #f8f9fa; /* สีพื้นหลังอ่อน */
 }
 
 tr:nth-child(even) td {
-  background-color: #d4edda; /* Slightly darker green for alternate rows */
+  background-color: #e9ecef; /* สีเทาอ่อนสำหรับแถวสลับ */
 }
 
 tr:hover td {
-  background-color: #c3e6cb; /* Darker green on hover */
+  background-color: #d6d8db; /* สีเทาเข้มขึ้นเมื่อโฮเวอร์ */
 }
