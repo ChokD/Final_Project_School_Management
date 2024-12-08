@@ -34,8 +34,8 @@ export class StudentComponent implements OnInit {
 
   validateForm() {
     // ตรวจสอบว่าไม่มีช่องว่าง
-    this.isValidFirstName = /^[a-zA-Z]+$/.test(this.newStudent.firstName.trim());
-    this.isValidLastName = /^[a-zA-Z]+$/.test(this.newStudent.lastName.trim());
+    this.isValidFirstName = /^[a-zA-Zก-ฮ]+$/.test(this.newStudent.firstName.trim());
+    this.isValidLastName = /^[a-zA-Zก-ฮ]+$/.test(this.newStudent.lastName.trim());
     this.isValidId = /^[0-9]+$/.test(this.newStudent.id.trim());
 
     // อัพเดตสถานะของฟอร์ม
