@@ -1,11 +1,12 @@
+/* Form Styles */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  border: 2px solid #4CAF50;
+  border: 2px solid #007bff; /* กรอบสีน้ำเงิน */
   border-radius: 10px;
-  background-color: #fff;
+  background-color: #f8f9fa; /* สีพื้นหลังอ่อน */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 50%;
   max-width: 600px;
@@ -35,7 +36,7 @@ form label {
 form input,
 form select {
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #007bff; /* ขอบสีฟ้า */
   border-radius: 5px;
   font-size: 14px;
   width: 65%; /* ปรับให้พอดีกับ label */
@@ -44,15 +45,15 @@ form select {
 
 form input:focus,
 form select:focus {
-  border-color: #4CAF50;
+  border-color: #0056b3; /* สีฟ้าเข้ม */
   outline: none;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  box-shadow: 0 0 5px rgba(0, 91, 179, 0.5); /* เงาสีฟ้า */
 }
 
 form button {
   align-self: center;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #007bff; /* ปุ่มสีฟ้า */
   color: white;
   border: none;
   border-radius: 5px;
@@ -61,11 +62,12 @@ form button {
 }
 
 form button:hover {
-  background-color: #45a049;
+  background-color: #0056b3; /* ปุ่มสีฟ้าเข้ม */
 }
 
+/* Edit & Delete Buttons */
 .edit-button {
-  background-color: #28a745; /* Green color */
+  background-color: #0056b3; /* น้ำเงินเข้ม */
   color: white;
   padding: 8px 15px; /* Adjust padding for better size */
   margin-right: 10px; /* Add spacing between buttons */
@@ -77,7 +79,7 @@ form button:hover {
 }
 
 .edit-button:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #004085; /* Darker blue on hover */
 }
 
 .delete-button {
@@ -101,14 +103,14 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #f8f9fa; /* พื้นหลังสีอ่อน */
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.5s forwards 0.5s;
 }
 
 thead {
-  background-color: #4CAF50;
+  background-color: #007bff; /* สีฟ้าหัวตาราง */
   color: white;
 }
 
@@ -132,7 +134,6 @@ tbody tr:hover {
   background-color: #ddd;
 }
 
-/* Container Styles */
 .container {
   display: flex;
   flex-direction: column;
@@ -142,7 +143,7 @@ tbody tr:hover {
 
 .container h1 {
   margin-bottom: 20px;
-  color: #333;
+  color: #032850;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.5s forwards;

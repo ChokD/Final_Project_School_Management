@@ -21,8 +21,8 @@ interface Teacher {
 export class TeacherComponent implements OnInit {
   teacherList: Teacher[] = [
     {
-      firstName: 'Jane',
-      lastName: 'Smith',
+      firstName: 'Thanarut',
+      lastName: 'Rungruangwisetchai',
       teacherId: 'T001',
       subject: 'Mathematics',
       position: 'Head Teacher',
