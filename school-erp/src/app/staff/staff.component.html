@@ -11,15 +11,16 @@
     </div>
     <div class="form-group">
       <label for="id">ID:</label>
-      <input type="text" id="id" name="id" [(ngModel)]="newStaff.id">
+      <input type="text" id="id" name="id" [(ngModel)]="newStaff.id" readonly>
     </div>
     <div class="form-group">
       <label for="role">Role:</label>
       <select id="role" name="role" [(ngModel)]="newStaff.role">
-        <option value="Teacher">Technician</option>
+        <option value="Technician">Technician</option>
         <option value="Janitor">Janitor</option>
         <option value="Support Staff">Support Staff</option>
-        <option value="Support Staff">Cafeteria staff</option>
+        <option value="Cafeteria Staff">Cafeteria Staff</option>
+        <option value="ETC.">ETC.</option>
       </select>
     </div>
     <div class="form-group">
@@ -54,4 +55,12 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- Alert Popup -->
+<div id="alertPopup" class="alert-popup">
+  <div class="alert-content">
+    <span id="alertMessage"></span>
+    <button class="close-btn" (click)="closeAlert()">Close</button>
+  </div>
 </div>

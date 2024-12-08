@@ -74,31 +74,47 @@ export class StaffComponent implements OnInit {
     const salaryPattern = /^[0-9]+$/;
 
     if (!this.newStaff.firstName || !this.newStaff.lastName || !this.newStaff.role || !this.newStaff.salary) {
-      alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+      this.showAlert('กรุณากรอกข้อมูลให้ครบถ้วน');
       return;
     }
 
     if (!this.newStaff.firstName || !namePattern.test(this.newStaff.firstName)) {
-      alert('กรุณากรอกชื่อเป็นตัวอักษรเท่านั้น');
+      this.showAlert('กรุณากรอกชื่อเป็นตัวอักษรเท่านั้น');
       return;
     }
 
     if (!this.newStaff.lastName || !namePattern.test(this.newStaff.lastName)) {
-      alert('กรุณากรอกนามสกุลเป็นตัวอักษรเท่านั้น');
+      this.showAlert('กรุณากรอกนามสกุลเป็นตัวอักษรเท่านั้น');
       return;
     }
 
     if (!this.newStaff.role) {
-      alert('กรุณาเลือกบทบาท');
+      this.showAlert('กรุณาเลือกบทบาท');
       return;
     }
 
     if (!this.newStaff.salary || !salaryPattern.test(this.newStaff.salary)) {
-      alert('กรุณากรอกเงินเดือนเป็นตัวเลขเท่านั้น');
+      this.showAlert('กรุณากรอกเงินเดือนเป็นตัวเลขเท่านั้น');
       return;
     }
 
     this.addOrUpdateStaff();
+  }
+
+  showAlert(message: string) {
+    const alertPopup = document.getElementById('alertPopup');
+    const alertMessage = document.getElementById('alertMessage');
+    if (alertPopup && alertMessage) {
+      alertMessage.innerText = message;
+      alertPopup.style.display = 'flex';
+    }
+  }
+
+  closeAlert() {
+    const alertPopup = document.getElementById('alertPopup');
+    if (alertPopup) {
+      alertPopup.style.display = 'none';
+    }
   }
 
   saveStaffList() {
