@@ -23,19 +23,46 @@ export class StudentComponent implements OnInit {
   editIndex: number | null = null;
   years: number[] = [1, 2, 3, 4, 5]; // ตัวเลือกสำหรับ Year
 
+  isValidFirstName = true;
+  isValidLastName = true;
+  isValidId = true;
+  isFormValid = true;
+
   ngOnInit() {
     this.loadStudentList();
   }
 
+  validateForm() {
+    // ตรวจสอบว่าไม่มีช่องว่าง
+    this.isValidFirstName = /^[a-zA-Z]+$/.test(this.newStudent.firstName.trim());
+    this.isValidLastName = /^[a-zA-Z]+$/.test(this.newStudent.lastName.trim());
+    this.isValidId = /^[0-9]+$/.test(this.newStudent.id.trim());
+
+    // อัพเดตสถานะของฟอร์ม
+    this.isFormValid = this.isValidFirstName && this.isValidLastName && this.isValidId;
+  }
+
+  capitalizeFirstLetter(value: string) {
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  }
+
   addOrUpdateStudent() {
-    if (this.editIndex !== null) {
-      this.studentList[this.editIndex] = { ...this.newStudent };
-      this.editIndex = null;
+    this.validateForm();
+    if (this.isFormValid) {
+      if (this.editIndex !== null) {
+        // แก้ไขข้อมูลนักเรียน
+        this.studentList[this.editIndex] = { ...this.newStudent };
+        this.editIndex = null;
+      } else {
+        // เพิ่มข้อมูลนักเรียนใหม่
+        this.studentList.push({ ...this.newStudent });
+      }
+      // รีเซ็ตฟอร์ม
+      this.newStudent = { firstName: '', lastName: '', id: '', year: 1, classroom: '' };
+      this.saveStudentList();
     } else {
-      this.studentList.push({ ...this.newStudent });
+      alert('Please fix the errors before submitting.');
     }
-    this.newStudent = { firstName: '', lastName: '', id: '', year: 1, classroom: '' };
-    this.saveStudentList();
   }
 
   editStudent(index: number) {

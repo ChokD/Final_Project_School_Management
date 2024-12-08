@@ -1,34 +1,89 @@
 <div class="container">
+  <!-- Header -->
   <h1>Student Management</h1>
+
+  <!-- Form for adding or editing a student -->
   <form (ngSubmit)="onSubmit()">
+    
+    <!-- First Name -->
     <div class="form-group">
       <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" [(ngModel)]="newStudent.firstName" name="firstName" placeholder="Enter first name" required />
+      <input 
+        type="text" 
+        id="firstName" 
+        [(ngModel)]="newStudent.firstName" 
+        name="firstName" 
+        placeholder="Enter first name" 
+        required 
+        (ngModelChange)="validateForm()"
+      />
+      <div *ngIf="!isValidFirstName" class="error">First name must contain only letters</div>
     </div>
+
+    <!-- Last Name -->
     <div class="form-group">
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" [(ngModel)]="newStudent.lastName" name="lastName" placeholder="Enter last name" required />
+      <input 
+        type="text" 
+        id="lastName" 
+        [(ngModel)]="newStudent.lastName" 
+        name="lastName" 
+        placeholder="Enter last name" 
+        required 
+        (ngModelChange)="validateForm()"
+      />
+      <div *ngIf="!isValidLastName" class="error">Last name must contain only letters</div>
     </div>
+
+    <!-- Student ID -->
     <div class="form-group">
       <label for="studentId">Student ID:</label>
-      <input type="text" id="studentId" [(ngModel)]="newStudent.id" name="studentId" placeholder="Enter student ID" required />
+      <input 
+        type="text" 
+        id="studentId" 
+        [(ngModel)]="newStudent.id" 
+        name="studentId" 
+        placeholder="Enter student ID" 
+        required 
+        (ngModelChange)="validateForm()"
+      />
+      <div *ngIf="!isValidId" class="error">ID must be a number</div>
     </div>
+
+    <!-- Year -->
     <div class="form-group">
       <label for="year">Year:</label>
       <select id="year" [(ngModel)]="newStudent.year" name="year" required>
         <option *ngFor="let year of years" [value]="year">{{ year }}</option>
       </select>
     </div>
+
+    <!-- Classroom -->
     <div class="form-group">
       <label for="classroom">Classroom:</label>
-      <input type="text" id="classroom" [(ngModel)]="newStudent.classroom" name="classroom" placeholder="Enter classroom" required />
+      <input 
+        type="text" 
+        id="classroom" 
+        [(ngModel)]="newStudent.classroom" 
+        name="classroom" 
+        placeholder="Enter classroom" 
+        required
+      />
     </div>
-    <button type="submit">{{ editIndex !== null ? 'Update' : 'Add' }} Student</button>
+
+    <!-- Submit button -->
+    <button type="submit" [disabled]="!isFormValid">
+      {{ editIndex !== null ? 'Update' : 'Add' }} Student
+    </button>
   </form>
 
+  <!-- List of students -->
+  <h2>Student List</h2>
+  
   <table>
     <thead>
       <tr>
+        <th>#</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>ID</th>
@@ -37,16 +92,29 @@
         <th>Actions</th>
       </tr>
     </thead>
+    
     <tbody>
       <tr *ngFor="let student of studentList; let i = index">
+        <td>{{ i + 1 }}</td>
         <td>{{ student.firstName }}</td>
         <td>{{ student.lastName }}</td>
         <td>{{ student.id }}</td>
         <td>{{ student.year }}</td>
         <td>{{ student.classroom }}</td>
         <td>
-          <button class="edit-button" (click)="editStudent(i)">Edit</button>
-          <button class="delete-button" (click)="deleteStudent(i)">Delete</button>
+          <!-- ปุ่ม Edit -->
+          <button 
+            class="edit-button" 
+            (click)="editStudent(i)">
+            Edit
+          </button>
+          
+          <!-- ปุ่ม Delete -->
+          <button 
+            class="delete-button" 
+            (click)="deleteStudent(i)">
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
