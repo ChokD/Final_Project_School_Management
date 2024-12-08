@@ -4,6 +4,7 @@ form {
   flex-direction: column;
   align-items: start;
   background-color: #f9f9f9;
+  border: 2px solid #007bff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -40,7 +41,7 @@ form textarea {
 
 form button {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #007bff;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -51,7 +52,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
 /* Table Styles */
@@ -80,8 +81,8 @@ td {
 }
 
 th {
-  background-color: #f2f2f2;
-  color: black;
+  background-color: #007bff;
+  color: white;
 }
 
 tr:nth-child(even) {
@@ -107,7 +108,7 @@ table button:last-child {
 }
 
 table button.edit {
-  background-color: #4CAF50;
+  background-color: #0056b3;
   color: white;
 }
 
@@ -117,7 +118,7 @@ table button.delete {
 }
 
 table button.edit:hover {
-  background-color: #45a049;
+  background-color: #004085;
 }
 
 table button.delete:hover {
