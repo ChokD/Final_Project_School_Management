@@ -43,7 +43,7 @@
         required
         (ngModelChange)="onScoreChange(); validateForm()"
       />
-      <div *ngIf="!isValidScore && newgrades.score?.toString().trim()" class="error">Enter numbers only(0-100)</div>
+      <div *ngIf="!isValidScore && newgrades.score?.toString()?.trim()" class="error">Enter numbers only(0-100)</div>
     </div>
 
     <!-- Grade -->
