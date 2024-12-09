@@ -3,15 +3,16 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" name="firstName" [(ngModel)]="newStaff.firstName">
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="newStaff.firstName" placeholder="Enter First Name">
+      
     </div>
     <div class="form-group">
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" name="lastName" [(ngModel)]="newStaff.lastName">
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="newStaff.lastName" placeholder="Enter Last Name">
     </div>
     <div class="form-group">
       <label for="id">ID:</label>
-      <input type="text" id="id" name="id" [(ngModel)]="newStaff.id" readonly>
+      <input type="text" id="id" name="id" [(ngModel)]="newStaff.id" readonly placeholder="Enter ID">
     </div>
     <div class="form-group">
       <label for="role">Role:</label>
@@ -25,7 +26,7 @@
     </div>
     <div class="form-group">
       <label for="salary">Salary:</label>
-      <input type="text" id="salary" name="salary" [(ngModel)]="newStaff.salary">
+      <input type="text" id="salary" name="salary" [(ngModel)]="newStaff.salary" placeholder="Enter Salary">
     </div>
     <button type="submit">Submit</button>
   </form>
